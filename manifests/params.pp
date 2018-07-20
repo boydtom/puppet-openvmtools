@@ -33,8 +33,12 @@ class openvmtools::params {
           $service_name = 'vmtoolsd'
           $service_hasstatus = true
           case $majdistrelease {
-            '3','4','5','6': {
+            '3','4','5': {
               $supported = false
+            }
+            '6': {
+              $supported = true
+              include epel
             }
             default: {
               $supported = true
